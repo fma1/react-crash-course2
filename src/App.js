@@ -1,1 +1,1 @@
-06 - State/App.js
+07 - Component Lifecycle/App.js
