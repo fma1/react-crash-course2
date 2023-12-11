@@ -1,35 +1,25 @@
-import { useState } from 'react';
+import { useContext } from 'react';
 import Profile from './Profile';
+import { UserContext, UserContextProvider } from './UserContext';
 import logo from '../logo.svg';
 import '../App.css';
 
-const bill = {
-  name: 'Bill',
-  course: 'English'
-};
-
-const joe = {
-  name: 'Joe',
-  course: 'Math'
-};
-
 function App() {
-  const [user, setUser] = useState(bill);
+  return (
+    <main>
+      <UserContextProvider>
+        <AppInternal />
+      </UserContextProvider>
+    </main>
+  );
+}
 
-  const toggleUser = () => {
-    if (user === bill) {
-      setUser(joe);
-    } else {
-      setUser(bill);
-    }
-  }
-
+function AppInternal() {
+  const { toggleUser } = useContext(UserContext);
   return (
     <>
-      <main>
-        <Profile user={user} />
-        <button onClick={toggleUser}>Toggle User</button>
-      </main>
+      <Profile />
+      <button onClick={toggleUser}>Toggle User</button>
     </>
   );
 }
