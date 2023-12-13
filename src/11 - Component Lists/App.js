@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, Fragment } from 'react';
 import logo from '../logo.svg';
 import '../App.css';
 
@@ -9,7 +9,14 @@ function App() {
   return (
     <>
       <ul>
-        {/* TODO */}
+        {items.map((item, idx) => {
+          return (
+            <Fragment key={idx}>
+              <li>{item}</li>
+              <li>Test</li>
+            </Fragment>
+          );
+        })}
       </ul>
 
       <br />
